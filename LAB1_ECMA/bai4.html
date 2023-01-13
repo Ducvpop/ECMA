@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .user_item{
+            color: green;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+    <div class="form">
+       <div>
+        <label for="">ID</label>
+        <input type="number" id="addUserID" value="" placeholder="">
+       </div>
+       <div>
+        <label for="">name</label>
+        <input type="text" id="addUserText" value="" placeholder="">
+       </div>
+       <div>
+        <label for="">gender</label>
+        <select name="" id="addUserGender">
+            <option value="1">male</option>
+            <option value="2">female</option>
+        </select>
+       </div>
+       <div>
+        <button type="button" id="addAction">Add</button>
+       </div>
+    </div>
+    <ul id="target">
+
+    </ul>
+    <script>
+         var users = [
+            {id: 1 , name: "James Smith", gender: 1},
+            {id: 2 , name: "Isla Brown", gender: 2},
+            {id: 3 , name: "Amelia Davies", gender: 2},
+            {id: 4 , name: "Jacob Evans", gender: 1}
+        ];
+        var target = document.querySelector("#target");
+        users.map(function(item){
+             var tagLi = document.createElement("li");
+             tagLi.setAttribute("class", "user_item");
+             tagLi.innerText = `${item.id} - ${item.name} - ${item.gender == 1 ? "male" : "female"}`;
+             target.appendChild(tagLi);
+        });
+        var id = document.getElementById("addUserID");
+        var text = document.getElementById("addUserText");
+        var gender = document.getElementById("addUserGender");
+        var button = document.getElementById("addAction");
+        button.addEventListener("click",function(){
+            var tagLia = document.createElement("li");
+            tagLia.setAttribute("class","user_item");
+            tagLia.innerText = `${id.value} -${text.value} - ${gender.value === 1 ? "male" : "female"}`;
+            target.appendChild(tagLia)
+        })   
+    </script>
+</body>
+</html>
